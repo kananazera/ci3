@@ -1,0 +1,32 @@
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+
+$lang['home'] = 'Home';
+$lang['contact'] = 'Contact';
+$lang['about'] = 'About';
+$lang['privacy_policy'] = 'Privacy policy';
+$lang['terms_and_conditions'] = 'Terms and conditions';
+$lang['categories'] = 'Categories';
+$lang['products'] = 'Products';
+$lang['login'] = 'Login';
+$lang['authorization'] = 'Authorization';
+$lang['register'] = 'Register';
+$lang['logout'] = 'Logout';
+$lang['profile'] = 'Profile';
+$lang['cart'] = 'Cart';
+$lang['footer_slogan'] = 'Experience seamless shopping with our user-friendly interface and secure checkout process. Whether you\'re browsing for yourself or searching for the perfect gift, our diverse range of categories ensures there\'s something for everyone.';
+$lang['name'] = 'Name';
+$lang['email'] = 'E-mail';
+$lang['password'] = 'Password';
+$lang['password_conformation'] = 'Password confirmation';
+$lang['read_and_accept_rules'] = 'I have read and accept the rules';
+$lang['forgot_password'] = 'Forgot your password?';
+$lang['register_error'] = 'An error occurred during registration';
+$lang['register_success'] = 'You have successfully registered';
+$lang['logout_success'] = 'You are logged out of your account';
+$lang['login_error'] = 'E-mail or password is incorrect';
+$lang['login_success'] = 'You have successfully logged into your account';
+$lang['error_404_title'] = '404 Page not found';
+$lang['error_404_message'] = 'The page you requested was not found.';
+$lang['error_403_title'] = '403 Access is denied';
+$lang['error_403_message'] = 'You don\'t have permission to access.';

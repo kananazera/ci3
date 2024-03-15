@@ -4,20 +4,20 @@
         <div class="col-12 col-md-4 mb-4 mb-md-0">
             <div class="mb-3">
                 <a href="#">
-                    <img id="logo-footer" class="img-fluid" src="assets/img/logo-light.png" alt="">
+                    <img id="logo-footer" class="img-fluid" src="<?= base_url('assets/img/logo-light.png') ?>" alt="">
                 </a>
             </div>
-            <div>translate.footer_slogan</div>
+            <div><?= $this->lang->line('footer_slogan') ?></div>
         </div>
 
         <div class="col-12 col-md-4 mb-4 mb-md-0 justify-content-md-center d-flex">
             <ul>
-                <li class="mb-2"><a href=""><i class="bi bi-arrow-right-short"></i> translate.categories</a></li>
-                <li class="mb-2"><a href=""><i class="bi bi-arrow-right-short"></i> translate.categories</a></li>
-                <li class="mb-2"><a href=""><i class="bi bi-arrow-right-short"></i> translate.about</a></li>
-                <li class="mb-2"><a href=""><i class="bi bi-arrow-right-short"></i> translate.contact</a></li>
-                <li class="mb-2"><a href=""><i class="bi bi-arrow-right-short"></i> translate.privacy_policy</a></li>
-                <li><a href=""><i class="bi bi-arrow-right-short"></i> translate.terms_and_conditions</a></li>
+                <li class="mb-2"><a href="<?= base_url('categories') ?>"><i class="bi bi-arrow-right-short"></i> <?= $this->lang->line('categories') ?></a></li>
+                <li class="mb-2"><a href="<?= base_url('products') ?>"><i class="bi bi-arrow-right-short"></i> <?= $this->lang->line('products') ?></a></li>
+                <li class="mb-2"><a href="<?= base_url('about') ?>"><i class="bi bi-arrow-right-short"></i> <?= $this->lang->line('about') ?></a></li>
+                <li class="mb-2"><a href="<?= base_url('contact') ?>"><i class="bi bi-arrow-right-short"></i> <?= $this->lang->line('contact') ?></a></li>
+                <li class="mb-2"><a href="<?= base_url('privacy-policy') ?>"><i class="bi bi-arrow-right-short"></i> <?= $this->lang->line('privacy_policy') ?></a></li>
+                <li><a href="<?= base_url('terms-and-conditions') ?>"><i class="bi bi-arrow-right-short"></i> <?= $this->lang->line('terms_and_conditions') ?></a></li>
             </ul>
         </div>
 
@@ -30,7 +30,7 @@
                 <a target="_blank" class="mx-1" href="youtube_url"><i class="bi bi-youtube"></i></a>
                 <a target="_blank" class="mx-1" href="whatsapp_url"><i class="bi bi-whatsapp"></i></a>
             </div>
-            <div>Ⓒ appname <?= date('Y') ?></div>
+            <div>Ⓒ <?= $this->config->item('app_name') ?> <?= date('Y') ?></div>
         </div>
     </div>
 
@@ -39,7 +39,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
 		crossorigin="anonymous"></script>
-<script src="assets/js/aos.min.js"></script>
+<script src="<?= base_url('assets/js/aos.min.js') ?>"></script>
 <script>
 	AOS.init();
 </script>

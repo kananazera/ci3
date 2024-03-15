@@ -1,0 +1,45 @@
+a {
+    text-decoration: none;
+}
+
+footer {
+    a {
+        color: #fff;
+    }
+}
+
+ul {
+    padding-left: 0;
+
+    li {
+        list-style: none;
+    }
+}
+
+#logo-nav {
+    width: 80px;
+}
+
+#logo-footer {
+    width: 150px;
+}
+
+.category-img {
+    height: 170px;
+}
+
+.product-img {
+    height: 170px;
+}
+
+
+
+.card .thumbnail {
+    position: relative;
+}
+
+.card .caption {
+    position: absolute;
+    background-color: red;
+    padding: 0 10px 0 10px;
+}

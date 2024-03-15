@@ -1,0 +1,33 @@
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+
+$lang['home'] = 'Əsas';
+$lang['contact'] = 'Əlaqə';
+$lang['about'] = 'Haqqımızda';
+$lang['privacy_policy'] = 'Gizlilik siyasəti';
+$lang['terms_and_conditions'] = 'Qaydalar və şərtlər';
+$lang['categories'] = 'Kateqoriyalar';
+$lang['products'] = 'Məhsullar';
+$lang['login'] = 'Daxil ol';
+$lang['authorization'] = 'Giriş';
+$lang['register'] = 'Qeydiyyat';
+$lang['logout'] = 'Çıxış';
+$lang['profile'] = 'Profil';
+$lang['cart'] = 'Səbət';
+$lang['footer_slogan'] = 'Bizim istifadəçi dostu interfeysimiz və təhlükəsiz ödəniş prosesimizlə problemsiz alış-verişdən zövq alın. İstər özünüzə baxırsınız, istərsə də mükəmməl hədiyyə axtarırsınız, bizim müxtəlif çeşidli məhsullarımız hər kəs üçün bir şeyin olmasını təmin edir.';
+$lang['name'] = 'Ad';
+$lang['email'] = 'E-poçt';
+$lang['password'] = 'Şifrə';
+$lang['password_conformation'] = 'Şifrənin təsdiqi';
+$lang['read_and_accept_rules'] = 'Qaydaları oxudum və qəbul edirəm';
+$lang['forgot_password'] = 'Şifrəni unutdun?';
+$lang['register_error'] = 'Qeydiyyat zamanı səhv baş verdi';
+$lang['register_success'] = 'Siz uğurla qeydiyyatdan keçdiniz';
+$lang['logout_success'] = 'Siz hesabınızdan çıxdınız';
+$lang['login_error'] = 'E-poçt və ya şifrə yanlışdır';
+$lang['login_success'] = 'Siz uğurla hesabınıza daxil oldunuz';
+$lang['login_success'] = 'Siz uğurla hesabınıza daxil oldunuz';
+$lang['error_404_title'] = '404 Səhifə tapılmadı';
+$lang['error_404_message'] = 'Axtardığınız səhifə tapılmadı.';
+$lang['error_403_title'] = '403 Giriş qadağandır';
+$lang['error_403_message'] = 'Sizin daxil olmaq üçün icazəniz yoxdur.';
