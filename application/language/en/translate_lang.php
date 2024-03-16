@@ -46,3 +46,4 @@ $lang['password_changed_success'] = 'Your password has been changed successfully
 $lang['current_password_error'] = 'The current password is incorrect';
 $lang['photo'] = 'Photo';
 $lang['upload'] = 'Upload';
+$lang['photo_upload_success'] = 'Photo uploaded successfully';

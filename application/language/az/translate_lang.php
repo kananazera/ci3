@@ -46,3 +46,4 @@ $lang['password_changed_success'] = 'Şifrəniz uğurla dəyişdirildi';
 $lang['current_password_error'] = 'Hazırki şifrə yanlışdır';
 $lang['photo'] = 'Şəkil';
 $lang['upload'] = 'Yüklə';
+$lang['photo_upload_success'] = 'Şəkil uğurla yekləndi';

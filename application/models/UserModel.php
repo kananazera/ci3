@@ -21,15 +21,8 @@ class UserModel extends CI_Model
 		$this->db->from('users');
 		$this->db->where('email', $data['email']);
 		$this->db->where('password', md5($data['password']));
-		$this->db->limit(1);
-
 		$query = $this->db->get();
-
-		if ($query->num_rows() == 1) {
-			return $query->row();
-		} else {
-			return false;
-		}
+		return ($query->num_rows() == 1) ? $query->row() : false;
 	}
 
 	public function getUser($user_id)
@@ -37,13 +30,16 @@ class UserModel extends CI_Model
 		$this->db->select('*');
 		$this->db->from('users');
 		$this->db->where('id', $user_id);
-
 		$query = $this->db->get();
+		return ($query->num_rows() == 1) ? $query->row() : false;
+	}
 
-		if ($query->num_rows() == 1) {
-			return $query->row();
-		} else {
-			return false;
-		}
+	public function checkEmail($email)
+	{
+		$this->db->select('email');
+		$this->db->from('users');
+		$this->db->where('email', $email);
+		$query = $this->db->get();
+		return ($query->num_rows() == 1) ? $query->row() : false;
 	}
 }

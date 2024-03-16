@@ -27,7 +27,7 @@
 					<span class="input-group-text"><i class="bi bi-envelope"></i></span>
 					<input type="email" id="email" name="email"
 						   value="<?= set_value('email', $this->session->userdata('auth_user')->email) ?>"
-						   class="<?php if (form_error('email')) { ?> is-invalid <?php } ?> form-control" required>
+						   class="<?php if (form_error('email')) { ?> is-invalid <?php } ?> form-control">
 				</div>
 				<?php if (form_error('email')) { ?>
 					<div class="badge text-danger"><?= form_error('email') ?></div>
