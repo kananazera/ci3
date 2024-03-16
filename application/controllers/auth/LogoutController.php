@@ -11,25 +11,11 @@ class LogoutController extends MY_Controller
 		}
 	}
 
-	public function index()
+	public function logout()
 	{
-		$header['title'] = $this->lang->line('profile');
-
-		$this->load->view('layouts/header', $header);
-		$this->load->view('layouts/nav');
-		$this->load->view('user/profile');
-		$this->load->view('layouts/footer');
-	}
-
-	public function update()
-	{
-		$this->form_validation->set_rules('email', $this->lang->line('email'), 'trim|required|valid_email');
-		$this->form_validation->set_rules('password', $this->lang->line('password'), 'trim|required');
-
-		if ($this->form_validation->run() == false) {
-			$this->index();
-		} else {
-
-		}
+		$this->session->unset_userdata('authenticated');
+		$this->session->unset_userdata('auth_user');
+		$this->session->set_flashdata('success', $this->lang->line('logout_success'));
+		redirect(base_url());
 	}
 }

@@ -21,18 +21,24 @@
 			<?= form_open('login') ?>
 
 			<div class="mb-3">
-				<label for="email"><?= $this->lang->line('email') ?></label>
-				<input type="email" id="email" name="email" value="<?= set_value('email') ?>"
-					   class="<?php if (form_error('email')) { ?> is-invalid <?php } ?> form-control" required>
+				<label for="email" class="mb-2"><?= $this->lang->line('email') ?></label>
+				<div class="input-group">
+					<span class="input-group-text"><i class="bi bi-envelope"></i></span>
+					<input type="text" id="email" name="email" value="<?= set_value('email') ?>"
+						   class="<?php if (form_error('email')) { ?> is-invalid <?php } ?> form-control" required>
+				</div>
 				<?php if (form_error('email')) { ?>
 					<div class="badge text-danger"><?= form_error('email') ?></div>
 				<?php } ?>
 			</div>
 
 			<div class="mb-3">
-				<label for="password"><?= $this->lang->line('password') ?></label>
-				<input type="password" id="password" name="password"
-					   class="<?php if (form_error('password')) { ?> is-invalid <?php } ?> form-control" required>
+				<label for="password" class="mb-2"><?= $this->lang->line('password') ?></label>
+				<div class="input-group">
+					<span class="input-group-text"><i class="bi bi-key"></i></span>
+					<input type="password" id="password" name="password"
+						   class="<?php if (form_error('password')) { ?> is-invalid <?php } ?> form-control" required>
+				</div>
 				<?php if (form_error('password')) { ?>
 					<div class="badge text-danger"><?= form_error('password') ?></div>
 				<?php } ?>

@@ -31,15 +31,3 @@ ul {
 .product-img {
     height: 170px;
 }
-
-
-
-.card .thumbnail {
-    position: relative;
-}
-
-.card .caption {
-    position: absolute;
-    background-color: red;
-    padding: 0 10px 0 10px;
-}
