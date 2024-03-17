@@ -34,10 +34,15 @@ class LoginController extends MY_Controller
 			$data['email'] = $this->input->post('email');
 			$data['password'] = $this->input->post('password');
 
-			$user = new UserModel;
-			$result = $user->login($data);
+			$result = $this->UserModel->login($data);
 
 			if ($result != false) {
+
+				if ($result->is_active == 0) {
+					$this->session->set_flashdata('error', $this->lang->line('user_is_not_active'));
+					redirect(base_url('login'));
+				}
+
 				$this->session->set_userdata('authenticated', true);
 				$this->session->set_userdata('auth_user', $result);
 				$this->session->set_flashdata('success', $this->lang->line('login_success'));

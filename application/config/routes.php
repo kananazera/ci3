@@ -5,6 +5,7 @@ $route['default_controller'] = 'HomeController';
 $route['404_override'] = 'PageController/error404';
 $route['translate_uri_dashes'] = TRUE;
 
+//web
 $route['lang/(:any)'] = 'LanguageController/switchLang/$1';
 $route['403'] = 'PageController/error403';
 $route['contact'] = 'PageController/contact';
@@ -22,3 +23,11 @@ $route['profile'] = 'ProfileController/index';
 $route['user/information']['post'] = 'ProfileController/updateInformation';
 $route['user/password']['post'] = 'ProfileController/changePassword';
 $route['user/photo']['post'] = 'ProfileController/uploadPhoto';
+$route['password/reset/(:any)'] = 'PasswordController/reset/$1';
+
+//api
+$route['api/users'] = 'api/UserController/index';
+$route['api/users/create'] = 'api/UserController/create';
+$route['api/users/(:any)'] = 'api/UserController/show/$1';
+$route['api/users/edit/(:any)'] = 'api/UserController/edit/$1';
+$route['api/users/delete/(:any)'] = 'api/UserController/delete/$1';

@@ -41,15 +41,13 @@ class RegisterController extends MY_Controller
 			$data['email'] = $email;
 			$data['password'] = md5($password);
 
-			$user = new UserModel;
-			$register = $user->insert($data);
+			$register = $this->UserModel->insert($data);
 
 			if ($register) {
 				$user_data['email'] = $email;
 				$user_data['password'] = $password;
 
-				$user = new UserModel;
-				$result = $user->login($user_data);
+				$result = $this->UserModel->login($user_data);
 
 				$this->session->set_userdata('authenticated', true);
 				$this->session->set_userdata('auth_user', $result);

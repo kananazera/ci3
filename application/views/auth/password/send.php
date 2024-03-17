@@ -3,7 +3,7 @@
 		<div class="col-12 col-md-5 border rounded p-4">
 
 			<h3 class="text-center mb-3">
-				<?= $this->lang->line('login') ?>
+				<?= $this->lang->line('forgot_password') ?>
 			</h3>
 
 			<?php if ($this->session->flashdata('success')) : ?>
@@ -18,7 +18,11 @@
 				</div>
 			<?php endif ?>
 
-			<?= form_open('login') ?>
+			<div class="mb-3">
+				<?= $this->lang->line('forgot_password_info') ?>
+			</div>
+
+			<?= form_open('forgot-password') ?>
 
 			<div class="mb-3">
 				<label for="email" class="mb-2"><?= $this->lang->line('email') ?></label>
@@ -33,23 +37,11 @@
 			</div>
 
 			<div class="mb-3">
-				<label for="password" class="mb-2"><?= $this->lang->line('password') ?></label>
-				<div class="input-group">
-					<span class="input-group-text"><i class="bi bi-key"></i></span>
-					<input type="password" id="password" name="password"
-						   class="<?php if (form_error('password')) { ?> is-invalid <?php } ?> form-control" required>
-				</div>
-				<?php if (form_error('password')) { ?>
-					<div class="badge text-danger"><?= form_error('password') ?></div>
-				<?php } ?>
-			</div>
-
-			<div class="mb-3">
-				<button type="submit" class="btn btn-primary"><?= $this->lang->line('login') ?></button>
+				<button type="submit" class="btn btn-primary"><?= $this->lang->line('reset_password') ?></button>
 			</div>
 
 			<ul>
-				<li><a href="<?= base_url('forgot-password') ?>"><?= $this->lang->line('forgot_password') ?></a>
+				<li><a href="<?= base_url('login') ?>"><?= $this->lang->line('login') ?></a>
 			</ul>
 
 			<?= form_close() ?>

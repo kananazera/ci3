@@ -42,4 +42,13 @@ class UserModel extends CI_Model
 		$query = $this->db->get();
 		return ($query->num_rows() == 1) ? $query->row() : false;
 	}
+
+	public function getAllActiveUsers()
+	{
+		$this->db->select('*');
+		$this->db->from('users');
+		$this->db->where('is_active', true);
+		$query = $this->db->get();
+		return $query->result();
+	}
 }

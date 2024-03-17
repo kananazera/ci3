@@ -11,6 +11,11 @@ class ProfileController extends MY_Controller
 		if (!$this->session->has_userdata('authenticated')) {
 			redirect(base_url('login'));
 		}
+
+		if ($this->UserModel->getUser($this->session->userdata('auth_user')->id)->is_active == 0) {
+			$this->session->set_flashdata('error', $this->lang->line('user_is_not_active'));
+			redirect(base_url('logout'));
+		}
 	}
 
 	public function index()
@@ -40,12 +45,10 @@ class ProfileController extends MY_Controller
 
 			$user_id = $this->session->userdata('auth_user')->id;
 
-			$user = new UserModel();
-			$result = $user->update($user_id, $data);
+			$result = $this->UserModel->update($user_id, $data);
 
 			if ($result > 0) {
-				$user = new UserModel;
-				$updated_user_data = $user->getUser($user_id);
+				$updated_user_data = $this->UserModel->getUser($user_id);
 				$this->session->set_userdata('auth_user', $updated_user_data);
 				$this->session->set_flashdata('success', $this->lang->line('information_updated_success'));
 				redirect(base_url('profile'));
@@ -61,8 +64,7 @@ class ProfileController extends MY_Controller
 		if ($email == $this->session->userdata('auth_user')->email) {
 			return true;
 		} else {
-			$user = new UserModel;
-			if ($user->checkEmail($email) == false) {
+			if ($this->UserModel->checkEmail($email) == false) {
 				return true;
 			} else {
 				$this->form_validation->set_message('email_check', $this->lang->line('form_validation_is_unique'));
@@ -88,13 +90,10 @@ class ProfileController extends MY_Controller
 
 			$user_id = $this->session->userdata('auth_user')->id;
 
-			$user = new UserModel;
-
-			$result = $user->update($user_id, $data);
+			$result = $this->UserModel->update($user_id, $data);
 
 			if ($result > 0) {
-				$user = new UserModel;
-				$updated_user_data = $user->getUser($user_id);
+				$updated_user_data = $this->UserModel->getUser($user_id);
 
 				$this->session->set_userdata('auth_user', $updated_user_data);
 				$this->session->set_flashdata('success', $this->lang->line('password_changed_success'));
@@ -123,9 +122,8 @@ class ProfileController extends MY_Controller
 			$data['photo'] = $upload_data['file_name'];
 
 			$user_id = $this->session->userdata('auth_user')->id;
-			$user = new UserModel;
-			$user->update($user_id, $data);
-			$updated_user_data = $user->getUser($user_id);
+			$this->UserModel->update($user_id, $data);
+			$updated_user_data = $this->UserModel->getUser($user_id);
 
 			if ($this->session->userdata('auth_user')->photo) {
 				unlink('uploads/photo/' . $this->session->userdata('auth_user')->photo);
