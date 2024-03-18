@@ -36,7 +36,7 @@ class UserModel extends CI_Model
 
 	public function checkEmail($email)
 	{
-		$this->db->select('email');
+		$this->db->select('id, email');
 		$this->db->from('users');
 		$this->db->where('email', $email);
 		$query = $this->db->get();

@@ -9,7 +9,7 @@
 			<div class="justify-content-center border rounded d-flex mb-3">
 				<?php if ($this->session->userdata('auth_user')->photo) { ?>
 					<img class="img-fluid p-1 rounded"
-						 src="<?= base_url('uploads/photo/') . $this->session->userdata('auth_user')->photo ?>" alt="">
+						 src="<?= base_url('uploads/user/photo/') . $this->session->userdata('auth_user')->photo ?>" alt="">
 				<?php } else { ?>
 					<img class="img-fluid p-1 rounded" src="<?= base_url('assets/img/no-user-photo.jpg') ?>" alt="">
 				<?php } ?>

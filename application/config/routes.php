@@ -19,11 +19,12 @@ $route['login']['post'] = 'auth/LoginController/login';
 $route['logout'] = 'auth/LogoutController/logout';
 $route['forgot-password']['get'] = 'auth/PasswordController/index';
 $route['forgot-password']['post'] = 'auth/PasswordController/send';
+$route['password/reset/(:any)']['get'] = 'auth/PasswordController/reset/$1';
+$route['password/reset']['post'] = 'auth/PasswordController/change';
 $route['profile'] = 'ProfileController/index';
 $route['user/information']['post'] = 'ProfileController/updateInformation';
 $route['user/password']['post'] = 'ProfileController/changePassword';
 $route['user/photo']['post'] = 'ProfileController/uploadPhoto';
-$route['password/reset/(:any)'] = 'PasswordController/reset/$1';
 
 //api
 $route['api/users'] = 'api/UserController/index';

@@ -8,13 +8,14 @@ class UserController extends MY_Controller
 	{
 		parent::__construct();
 		$this->load->model('UserModel');
+		$this->load->helper('api_helper');
 	}
 
 	public function index()
 	{
-		$user = new UserModel;
-		$users = $user->getAllActiveUsers();
-		$this->response(100, 'List of all active users', $users, 200);
+		$users = $this->UserModel->getAllActiveUsers();
+		$api_helper = new \helpers\api_helper;
+		$api_helper->response(100, 'List of all active users', $users, 200);
 	}
 
 	public function create()

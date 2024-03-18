@@ -107,7 +107,7 @@ class ProfileController extends MY_Controller
 
 	public function uploadPhoto()
 	{
-		$config['upload_path'] = 'uploads/photo/';
+		$config['upload_path'] = 'uploads/user/photo/';
 		$config['allowed_types'] = 'gif|jpg|jpeg|png';
 		$config['max_size'] = 10000;
 
@@ -126,7 +126,7 @@ class ProfileController extends MY_Controller
 			$updated_user_data = $this->UserModel->getUser($user_id);
 
 			if ($this->session->userdata('auth_user')->photo) {
-				unlink('uploads/photo/' . $this->session->userdata('auth_user')->photo);
+				unlink('uploads/user/photo/' . $this->session->userdata('auth_user')->photo);
 			}
 
 			$this->session->set_userdata('auth_user', $updated_user_data);

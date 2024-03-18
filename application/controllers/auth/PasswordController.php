@@ -8,6 +8,8 @@ class PasswordController extends MY_Controller
 		parent::__construct();
 		$this->load->model('UserModel');
 		$this->load->model('PasswordResetTokenModel');
+		$this->load->library('email');
+		$this->load->helper('email_helper');
 
 		if ($this->session->has_userdata('authenticated')) {
 			redirect(base_url());
@@ -24,14 +26,52 @@ class PasswordController extends MY_Controller
 		$this->load->view('layouts/footer');
 	}
 
-	public function reset()
+	public function reset($token)
 	{
-		$header['title'] = $this->lang->line('forgot_password');
+		$data['token'] = $this->PasswordResetTokenModel->getToken($token);
+
+		$header['title'] = $this->lang->line('reset_password');
 
 		$this->load->view('layouts/header', $header);
 		$this->load->view('layouts/nav');
-		$this->load->view('auth/password/reset');
+		$this->load->view('auth/password/reset', $data);
 		$this->load->view('layouts/footer');
+	}
+
+	public function change()
+	{
+		$token = $this->input->post('token');
+		$email = $this->input->post('email');
+		$password = $this->input->post('password');
+
+		$this->form_validation->set_rules('password', $this->lang->line('password'), 'min_length[6]');
+		$this->form_validation->set_rules('password_confirmation', $this->lang->line('password_confirmation'), 'matches[password]');
+
+		if ($this->form_validation->run() == false) {
+			$this->reset($token);
+		} else {
+
+			if (!$this->PasswordResetTokenModel->getToken($token)) {
+				$this->session->set_flashdata('error', $this->lang->line('reset_password_error'));
+				redirect(base_url('login'));
+			}
+
+			$data['password'] = md5($password);
+
+			$user_id = $this->UserModel->checkEmail($email)->id;
+			$token_id = $this->PasswordResetTokenModel->getToken($token)->id;
+
+			$result = $this->UserModel->update($user_id, $data);
+
+			if ($result > 0) {
+				$this->PasswordResetTokenModel->delete($token_id);
+				$this->session->set_flashdata('success', $this->lang->line('reset_password_success'));
+				redirect(base_url('login'));
+			} else {
+				$this->session->set_flashdata('error', $this->lang->line('forgot_password_error'));
+				redirect(base_url('login'));
+			}
+		}
 	}
 
 	public function send()
@@ -50,44 +90,69 @@ class PasswordController extends MY_Controller
 
 				$data['email'] = $email;
 				$data['token'] = $token;
+				$data['date'] = date('Y-m-d');
 
 				if ($this->PasswordResetTokenModel->checkToken($email) == false) {
+
 					$this->PasswordResetTokenModel->insert($data);
+					$token_id = $this->db->insert_id();
+
 					$link = base_url('password/reset/' . $token);
 
+					$message = '
+						<html>
+						<head>
+						<style>
+						a {
+							text-decoration: none;
+						}
+						p {
+							text-align: center;
+							margin-bottom: 50px;
+						}
+						#button {
+							background-color: #0d6efd;
+							color: #fff;
+							border: 1px solid #0d6efd;
+							padding: 6px 12px;
+							border-radius: 8px;
+						}
+						</style>
+						</head>
+						<body>
+							<p>
+								<img src="' . base_url('assets/img/logo-email.png') . '" alt="">
+							</p>
+							<p>' . $this->lang->line('change_password_info') . '</p>
+							<p>
+								<a id="button" href="' . $link . '">' . $this->lang->line('reset_password') . '</a>
+							</p>
+							<hr>
+							<p>
+								© <a href="' . base_url() . '">' . $this->config->item('app_name') . '</a> ' . date('Y') . '
+							</p>
+						</body>
+						</html>
+					';
 
-//					$config['protocol'] = 'smtp';
-//					$config['smtp_host'] = 'smtp.gmail.com';
-//					$config['smtp_user'] = 'kananazera@gmail.com';
-//					$config['smtp_pass'] = 'ztvjgzihncklfyly';
-//					$config['smtp_port'] = 465;
-//					$config['smtp_crypto'] = 'ssl';
-//					$config['charset'] = 'utf-8';
-//					$config['mailtype'] = 'html';
-
-					$config['protocol'] = 'mail';
-					//$config['mailpath'] = '/usr/sbin/sendmail';
-					$config['charset'] = 'utf-8';
-					$config['wordwrap'] = true;
+					$email_helper = new \helpers\Email_helper;
+					$config = $email_helper->config();
 
 					$this->email->initialize($config);
-
-					$this->load->library('email');
-					//$this->email->initialize($config);
-
-					$this->email->from('kananazera@gmail.com', 'kanan');
-					$this->email->to('kananazera@gmail.com');
-					$this->email->subject('Here is your info ');
-					$this->email->message('Hi Here is the info you requested.');
+					$this->email->from('kananazera@gmail.com', $this->config->item('app_name'));
+					$this->email->to($email);
+					$this->email->subject($this->lang->line('reset_password'));
+					$this->email->message($message);
 
 					if ($this->email->send()) {
-						echo 'ok';
+						$this->session->set_flashdata('success', $this->lang->line('forgot_password_success'));
+						redirect(base_url('forgot-password'));
 					} else {
-						echo 'error';
+						$this->PasswordResetTokenModel->delete($token_id);
+						$this->session->set_flashdata('error', $this->lang->line('send_email_error'));
+						redirect(base_url('forgot-password'));
 					}
 
-					//$this->session->set_flashdata('success', $this->lang->line('forgot_password_success'));
-					//redirect(base_url('forgot-password'));
 				} else {
 					$this->session->set_flashdata('error', $this->lang->line('forgot_password_exists'));
 					redirect(base_url('forgot-password'));
