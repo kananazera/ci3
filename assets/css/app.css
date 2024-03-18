@@ -24,10 +24,40 @@ ul {
     width: 150px;
 }
 
+#go-to-top {
+	display: none;
+	position: fixed;
+	bottom: 30px;
+	right: 30px;
+	z-index: 99;
+	font-size: 12px;
+	outline: none;
+	background-color: #0d6efd;
+	color: #fdfdff;
+	border: 1px solid #fff;
+	cursor: pointer;
+	padding: 12px 15px;
+	border-radius: 4px;
+}
+
+#go-to-top:hover {
+	background-color: #0f2952;
+}
+
 .category-img {
     height: 170px;
 }
 
 .product-img {
     height: 170px;
+}
+
+.navbar {
+	background-color: #0d6efd;
+	color: #fff;
+}
+
+.navbar a {
+	background-color: #0d6efd;
+	color: #fff;
 }

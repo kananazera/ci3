@@ -1,4 +1,4 @@
-<nav class="fixed-top sticky-top navbar navbar-expand-lg bg-body-tertiary mb-5">
+<nav class="fixed-top sticky-top navbar navbar-expand-lg mb-5">
 	<div class="container-fluid">
 		<a class="navbar-brand" href="<?= base_url() ?>">
 			<img id="logo-nav" class="img-fluid" src="<?= base_url('assets/img/logo-dark.png') ?>" alt="">
