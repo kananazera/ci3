@@ -101,37 +101,37 @@ class PasswordController extends MY_Controller
 
 					$message = '
 						<html>
-						<head>
-						<style>
-						a {
-							text-decoration: none;
-						}
-						p {
-							text-align: center;
-							margin-bottom: 50px;
-						}
-						#button {
-							background-color: #0d6efd;
-							color: #fff;
-							border: 1px solid #0d6efd;
-							padding: 6px 12px;
-							border-radius: 8px;
-						}
-						</style>
-						</head>
-						<body>
-							<p>
-								<img src="' . base_url('assets/img/logo-email.png') . '" alt="">
-							</p>
-							<p>' . $this->lang->line('change_password_info') . '</p>
-							<p>
-								<a id="button" href="' . $link . '">' . $this->lang->line('reset_password') . '</a>
-							</p>
-							<hr>
-							<p>
-								© <a href="' . base_url() . '">' . $this->config->item('app_name') . '</a> ' . date('Y') . '
-							</p>
-						</body>
+							<head>
+								<style>
+								a {
+									text-decoration: none;
+								}
+								div, p {
+									text-align: center;
+									margin-bottom: 50px;
+								}
+								#button {
+									background-color: #0d6efd;
+									color: #fff;
+									border: 1px solid #0d6efd;
+									padding: 6px 12px;
+									border-radius: 8px;
+								}
+								</style>
+							</head>
+							<body>
+								<div>
+									<img src="' . base_url('assets/img/logo-email.png') . '" alt="">
+								</div>
+								
+								<p><strong>' . $this->lang->line('change_password_info') . '</strong></p>
+								<p><a id="button" href="' . $link . '">' . $this->lang->line('reset_password') . '</a></p>
+								
+								<hr>
+								<div>
+									© <a href="' . base_url() . '">' . $this->config->item('app_name') . '</a> ' . date('Y') . '
+								</div>
+							</body>
 						</html>
 					';
 
@@ -139,7 +139,7 @@ class PasswordController extends MY_Controller
 					$config = $email_helper->config();
 
 					$this->email->initialize($config);
-					$this->email->from('kananazera@gmail.com', $this->config->item('app_name'));
+					$this->email->from($this->config->item('admin_email'), $this->config->item('app_name'));
 					$this->email->to($email);
 					$this->email->subject($this->lang->line('reset_password'));
 					$this->email->message($message);

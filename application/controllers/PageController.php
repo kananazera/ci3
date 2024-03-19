@@ -3,16 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class PageController extends MY_Controller
 {
-	public function contact()
-	{
-		$header['title'] = $this->lang->line('contact');
-
-		$this->load->view('layouts/header', $header);
-		$this->load->view('layouts/nav');
-		$this->load->view('pages/contact');
-		$this->load->view('layouts/footer');
-	}
-
 	public function about()
 	{
 		$header['title'] = $this->lang->line('about');

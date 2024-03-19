@@ -8,7 +8,8 @@ $route['translate_uri_dashes'] = TRUE;
 //web
 $route['lang/(:any)'] = 'LanguageController/switchLang/$1';
 $route['403'] = 'PageController/error403';
-$route['contact'] = 'PageController/contact';
+$route['contact']['get'] = 'ContactController/index';
+$route['contact']['post'] = 'ContactController/send';
 $route['about'] = 'PageController/about';
 $route['privacy-policy'] = 'PageController/privacyPolicy';
 $route['terms-and-conditions'] = 'PageController/termsAndConditions';

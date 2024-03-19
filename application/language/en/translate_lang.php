@@ -3,6 +3,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 $lang['home'] = 'Home';
 $lang['contact'] = 'Contact';
+$lang['send'] = 'Send';
+$lang['contact_info'] = 'Write your request and send it to us';
+$lang['contact_success'] = 'Your request has been successfully sent, you will be contacted shortly.';
+$lang['contact_error'] = 'There was an error sending the request, please check again.';
 $lang['about'] = 'About';
 $lang['privacy_policy'] = 'Privacy policy';
 $lang['terms_and_conditions'] = 'Terms and conditions';
@@ -36,6 +40,7 @@ $lang['error_404_message'] = 'The page you requested was not found.';
 $lang['error_403_title'] = '403 Access is denied';
 $lang['error_403_message'] = 'You don\'t have permission to access.';
 $lang['mobile_number'] = 'Mobile number';
+$lang['message'] = 'Message';
 $lang['birthday'] = 'Birthday';
 $lang['select'] = 'Select';
 $lang['gender'] = 'Gender';

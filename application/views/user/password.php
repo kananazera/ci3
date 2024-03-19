@@ -47,7 +47,7 @@
 				<?php } ?>
 			</div>
 
-			<div class="mb-3">
+			<div class="d-grid gap-2 mb-3">
 				<button type="submit" class="btn btn-primary"><?= $this->lang->line('change') ?></button>
 			</div>
 

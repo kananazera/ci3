@@ -76,7 +76,7 @@
 				<label for="read_and_accept_rules"><?= $this->lang->line('read_and_accept_rules') ?></label>
 			</div>
 
-			<div class="mb-3">
+			<div class="d-grid gap-2 mb-3">
 				<button type="submit" class="btn btn-primary"><?= $this->lang->line('register') ?></button>
 			</div>
 

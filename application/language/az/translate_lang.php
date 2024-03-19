@@ -3,6 +3,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 $lang['home'] = 'Əsas';
 $lang['contact'] = 'Əlaqə';
+$lang['send'] = 'Göndər';
+$lang['contact_info'] = 'Müraciətinizi yazıb bizə göndərin';
+$lang['contact_success'] = 'Müraciətiniz uğurla göndərildi, qısa zaman ərzində sizinlə əlaqə saxlanılacaq.';
+$lang['contact_error'] = 'Müraciətin göndərilməsində səhv var, xahiş olunur yenidən yoxlayasınız.';
 $lang['about'] = 'Haqqımızda';
 $lang['privacy_policy'] = 'Gizlilik siyasəti';
 $lang['terms_and_conditions'] = 'Qaydalar və şərtlər';
@@ -36,6 +40,7 @@ $lang['error_404_title'] = '404 Səhifə tapılmadı';
 $lang['error_404_message'] = 'Axtardığınız səhifə tapılmadı.';
 $lang['error_403_title'] = '403 Giriş qadağandır';
 $lang['mobile_number'] = 'Mobil nömrə';
+$lang['message'] = 'Mesaj';
 $lang['birthday'] = 'Doğum tarixi';
 $lang['select'] = 'Seç';
 $lang['gender'] = 'Cins';
