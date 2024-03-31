@@ -1,0 +1,148 @@
+<div class="container-fluid" data-aos="zoom-in-up">
+	<div class="pt-4">
+		<div class="container-fluid">
+
+			<div class="row justify-content-center">
+
+				<div class="col-12 col-md-2 mb-3 mb-md-0" data-aos="zoom-in-up">
+					<?php $this->load->view('admin/layouts/side') ?>
+				</div>
+
+				<div class="col-12 col-md-10" data-aos="zoom-in-up">
+					<div class="border rounded p-4">
+
+						<h3 class="text-center mb-3">
+							<?= $this->lang->line('edit_category') ?>
+						</h3>
+
+						<div class="mb-3 text-end">
+							<a href="<?= base_url('admin/categories') ?>"
+							   class="btn btn-dark"><i
+									class="bi bi-list"></i> <?= $this->lang->line('categories') ?></a>
+						</div>
+
+						<?php if ($this->session->flashdata('success')) : ?>
+							<div class="text-center alert alert-success">
+								<?= $this->session->flashdata('success') ?>
+							</div>
+						<?php endif ?>
+
+						<?php if ($this->session->flashdata('error')) : ?>
+							<div class="text-center alert alert-danger">
+								<?= $this->session->flashdata('error') ?>
+							</div>
+						<?php endif ?>
+
+						<?= form_open_multipart('admin/categories/edit/' . $category->id) ?>
+
+						<div class="badge text-danger mb-3">
+							<?= $this->lang->line('slug_info') ?>
+						</div>
+
+						<div class="row">
+							<div class="col-12 col-md-5 mb-3 mb-md-0">
+								<div class="mb-3">
+									<label for="slug" class="mb-1"><?= $this->lang->line('slug') ?></label>
+									<div class="input-group">
+										<span class="input-group-text"><i class="bi bi-link"></i></span>
+										<input type="text" id="slug" name="slug"
+											   value="<?= set_value('slug', $category->slug) ?>"
+											   class="<?php if (form_error('slug')) { ?> is-invalid <?php } ?> form-control">
+									</div>
+									<?php if (form_error('slug')) { ?>
+										<div class="badge text-danger"><?= form_error('slug') ?></div>
+									<?php } ?>
+								</div>
+
+								<div class="mb-3">
+									<label for="name" class="mb-1"><?= $this->lang->line('name') ?></label>
+									<div class="input-group">
+										<span class="input-group-text"><i class="bi bi-bounding-box-circles"></i></span>
+										<input type="text" id="name" name="name"
+											   value="<?= set_value('name', $category->name) ?>"
+											   class="<?php if (form_error('name')) { ?> is-invalid <?php } ?> form-control"
+											   required>
+									</div>
+									<?php if (form_error('name')) { ?>
+										<div class="badge text-danger"><?= form_error('name') ?></div>
+									<?php } ?>
+								</div>
+
+								<div class="mb-3">
+									<div class="input-group">
+										<input type="checkbox" id="is_active" name="is_active"
+											   class="form-check-input rounded" <?= ($category->is_active == 1) ? 'checked' : '' ?>>
+										<label for="is_active"
+											   class="mx-2"><?= $this->lang->line('is_active') ?></label>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-12 col-md-7 mb-3 mb-md-0">
+								<div class="mb-3">
+									<label for="parent_id"
+										   class="mb-1"><?= $this->lang->line('parent_category') ?></label>
+									<div class="input-group">
+										<span class="input-group-text"><i class="bi bi-bookmarks"></i></span>
+										<select name="parent_id" id="parent_id"
+												class="<?php if (form_error('parent_id')) { ?> is-invalid <?php } ?> form-select">
+											<option value=""><?= $this->lang->line('select') ?></option>
+											<?php foreach ($categories as $row) : ?>
+												<option
+													value="<?= $row->id ?>" <?= ($category->parent_id == $row->id) ? 'selected' : '' ?>><?= $row->name ?></option>
+											<?php endforeach ?>
+										</select>
+									</div>
+									<?php if (form_error('parent_id')) { ?>
+										<div class="badge text-danger"><?= form_error('parent_id') ?></div>
+									<?php } ?>
+								</div>
+
+								<div class="mb-3">
+									<label for="image" class="mb-1"><?= $this->lang->line('image') ?></label>
+									<div class="input-group">
+										<span class="input-group-text"><i class="bi bi-image"></i></span>
+										<input type="file" id="image" name="image"
+											   class="<?php if (form_error('image')) { ?> is-invalid <?php } ?> form-control">
+									</div>
+									<?php if (form_error('image')) { ?>
+										<div class="badge text-danger"><?= form_error('image') ?></div>
+									<?php } ?>
+								</div>
+
+								<div class="mb-3">
+									<?php if ($category->image) : ?>
+										<div class="text-center">
+											<img class="img-fluid category-img border rounded mb-2"
+												 src="<?= base_url('uploads/category/image/' . $category->image) ?>"
+												 alt="">
+											<div>
+												<a class="btn btn-danger"
+												   href="<?= base_url('admin/categories/image/delete/' . $category->id) ?>"
+												   onclick="if(confirm('<?= $this->lang->line('product_image_delete_confirm') ?>')){return true;}else{return false;}"><?= $this->lang->line('delete') ?></a>
+											</div>
+										</div>
+									<?php else: ?>
+										<div class="badge bg-danger">
+											<?= $this->lang->line('no_image') ?>
+										</div>
+									<?php endif ?>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="d-grid gap-2 mb-3">
+							<button type="submit" class="btn btn-dark"><?= $this->lang->line('edit') ?></button>
+						</div>
+
+						<?= form_close() ?>
+
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
