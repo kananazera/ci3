@@ -25,16 +25,18 @@ date_default_timezone_set("Asia/Baku");
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://192.168.100.8/ci3';
+$config['base_url'] = 'http://localhost/xpsoftware';
 
 // custom configs
-$config['app_name'] = 'Shop';
-$config['meta_keywords'] = 'Shop';
-$config['meta_description'] = 'Shop';
+$config['app_name'] = 'XPSoftWare';
+$config['meta_keywords'] = 'amazon, trendyol';
+$config['meta_description'] = 'xpsoftware';
 
 $config['languages'] = array(
-	'az' => 'Azərbaycan',
-	'en' => 'English'
+	'en' => 'English',
+	'az' => 'Azerbaijan',
+	'tr' => 'Turkish',
+	'ru' => 'Russian'
 );
 
 $config['currency_id'] = 1;

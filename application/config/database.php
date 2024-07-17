@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'ideatech.beget.tech',
-	'username' => 'ideatech_ci3',
-	'password' => '%aI4Gm9k',
-	'database' => 'ideatech_ci3',
+	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'xpsoftware',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

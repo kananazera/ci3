@@ -8,7 +8,7 @@ class EmailVerifyController extends MY_Controller
 	{
 		parent::__construct();
 		$this->load->model('UserModel');
-		$this->load->model('EmailVerifyTokenModel');
+			$this->load->model('EmailVerifyTokenModel');
 		$this->load->library('email');
 		$this->load->helper('email_helper');
 	}
