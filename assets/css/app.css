@@ -8,10 +8,15 @@ del {
 
 ul {
 	padding-left: 0;
+}
 
-	li {
-		list-style: none;
-	}
+li {
+	list-style: none;
+}
+
+footer {
+	background-color: #353C40;
+	color: #FFFFFF;
 }
 
 #logo-nav {
@@ -33,6 +38,8 @@ ul {
 	cursor: pointer;
 	padding: 12px 15px;
 	border-radius: 4px;
+	background-color: #FF7F00;
+	color: #FFFFFF;
 }
 
 #mobile-nav {
@@ -44,6 +51,14 @@ ul {
 }
 
 .socials, .mobile-icons {
+	font-size: 18px;
+}
+
+.nav-link {
+	font-weight: bold;
+}
+
+.nav-link .bi {
 	font-size: 18px;
 }
 
@@ -154,7 +169,51 @@ ul {
 	color: #212529;
 }
 
+.flag {
+	width: 25px;
+}
+
+.navbar {
+	background-color: #FF7F00;
+}
+
+.input-group-text {
+	background-color: #FF7F00;
+	color: #FFFFFF;
+}
+
+.btn-dark {
+	background-color: #FF7F00;
+	border: none;
+}
+
+.dropdown-menu-dark {
+	background-color: #353C40;
+}
+
+.dropdown-item:active {
+	background-color: #353C40;
+}
+
+.btn-dark:hover {
+	background-color: #353C40;
+}
+
+.form-control:focus {
+	border-color: #FF7F00;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgb(255, 127, 0);
+}
+
+#slides img {
+	height: 300px;
+	border-radius: 12px;
+}
+
 @media only screen and (max-width: 600px) {
+	#slides img {
+		height: 150px;
+	}
+
 	.product-img {
 		height: 100px;
 	}

@@ -1,4 +1,4 @@
-<nav class="fixed-top sticky-top navbar navbar-dark bg-dark navbar-expand-lg">
+<nav class="fixed-top sticky-top navbar navbar-expand-lg">
 	<div class="container-fluid">
 		<a class="navbar-brand" href="<?= base_url('admin') ?>">
 			<img id="logo-nav" class="img-fluid" src="<?= base_url('assets/img/logo.png') ?>" alt="">
@@ -18,12 +18,12 @@
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
 					   aria-expanded="false">
-						<i class="bi bi-globe2"></i> <?= $this->config->item('languages')[$this->session->userdata('lang')] ?>
+						<img class="flag" src="<?=base_url('assets/img')?>/<?= $this->session->userdata('lang') ?>.png" alt="<?= $this->session->userdata('lang') ?>"> <?= $this->config->item('languages')[$this->session->userdata('lang')] ?>
 					</a>
 					<ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark">
 						<?php foreach ($this->config->item('languages') as $key => $value) : ?>
-							<li><a class="dropdown-item" href="<?= base_url('lang/' . $key) ?>"><i
-										class="bi bi-globe"></i> <?= $value ?></a></li>
+							<li><a class="dropdown-item" href="<?= base_url('lang/' . $key) ?>">
+									<img class="flag" src="<?=base_url('assets/img')?>/<?= $key ?>.png" alt="<?= $key ?>"> <?= $value ?></a></li>
 						<?php endforeach ?>
 					</ul>
 				</li>

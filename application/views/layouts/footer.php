@@ -23,7 +23,7 @@
 	</ul>
 </div>
 
-<footer class="mt-5 bg-dark text-white py-3 px-5 d-none d-md-block">
+<footer class="mt-5 py-3 px-5 d-none d-md-block">
 
 	<div class="row">
 		<div class="col-12 col-md-3 mb-4 mb-md-0">
@@ -51,12 +51,10 @@
 
 		<div class="col-12 col-md-3 mb-4 mb-md-0 justify-content-md-center d-flex">
 			<ul>
-				<?php foreach ($pages as $page) : ?>
-					<li class="mb-2">
-						<a class="link-light" href="<?= base_url($page->slug) ?>"><i
-								class="bi bi-arrow-right-short"></i> <?= $page->title ?></a>
-					</li>
-				<?php endforeach ?>
+				<li class="mb-2"><a class="link-light" href="<?= base_url('privacy-policy') ?>"><i
+								class="bi bi-shield-check"></i> <?= $this->lang->line('privacy_policy') ?></a></li>
+				<li class="mb-2"><a class="link-light" href="<?= base_url('terms-and-conditions') ?>"><i
+								class="bi bi-activity"></i> <?= $this->lang->line('terms_and_conditions') ?></a></li>
 			</ul>
 		</div>
 
@@ -78,9 +76,26 @@
 		</div>
 	</div>
 
+	<div class="row">
+		<div class="col-12 col-md-3 mb-4 mb-md-0 justify-content-md-center d-flex">
+
+		</div>
+
+		<div class="col-12 col-md-3 mb-4 mb-md-0 justify-content-md-center d-flex">
+			<ul>
+				<?php foreach ($footer_pages as $page) : ?>
+					<li class="mb-2">
+						<a class="link-light" href="<?= base_url($page->slug) ?>"><i
+									class="bi bi-arrow-right-short"></i> <?= $page->title ?></a>
+					</li>
+				<?php endforeach ?>
+			</ul>
+		</div>
+	</div>
+
 </footer>
 
-<button onclick="goToTopFunction()" id="go-to-top" class="btn btn-dark">
+<button onclick="goToTopFunction()" id="go-to-top" class="btn ">
 	<i class="bi bi-arrow-up-square"></i>
 </button>
 

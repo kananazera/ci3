@@ -10,17 +10,19 @@ class HomeController extends MY_Controller
 		$this->load->model('ProductImageModel');
 		$this->load->model('CurrencyModel');
 		$this->load->model('BlogModel');
+		$this->load->model('SlideModel');
 		$this->load->helper('product');
 	}
 
 	public function index()
 	{
 		$header['title'] = $this->lang->line('home');
-		$footer['pages'] = $this->PageModel->getPages($this->session->userdata('lang'));
+		$footer['footer_pages'] = $this->PageModel->getPages($this->session->userdata('lang'), 'footer');
 
 		$data['last_products'] = $this->ProductModel->getLastProducts();
 		$data['discount_products'] = $this->ProductModel->getDiscountProducts();
 		$data['last_blog'] = $this->BlogModel->getLastBlog();
+		$data['slides'] = $this->SlideModel->getActiveSlides();
 
 		$this->load->view('layouts/header', $header);
 		$this->load->view('home/index', $data);

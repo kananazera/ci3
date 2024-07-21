@@ -1,4 +1,4 @@
-<nav class="fixed-top sticky-top navbar navbar-dark bg-dark navbar-expand-lg mb-5">
+<nav class="fixed-top sticky-top navbar navbar-expand-lg mb-5">
 	<div class="container-fluid">
 		<a class="navbar-brand" href="<?= base_url() ?>">
 			<img id="logo-nav" class="img-fluid" src="<?= base_url('assets/img/logo.png') ?>" alt="">
@@ -9,9 +9,6 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-				<li class="nav-item">
-					<a class="nav-link" href="<?= base_url() ?>"><i class="bi bi-house"></i> <?= $this->lang->line('home') ?></a>
-				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="<?= base_url('categories') ?>"><i class="bi bi-bookmarks"></i> <?= $this->lang->line('categories') ?></a>
 				</li>
@@ -29,20 +26,27 @@
 			<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 				<li class="nav-item">
 					<a class="nav-link position-relative me-3" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i
+								class="bi bi-bell"></i>
+						<span class="position-absolute top-0 badge rounded-pill bg-secondary">0</span>
+					</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link position-relative me-3" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i
 							class="bi bi-cart"></i> <?= $this->lang->line('cart') ?>
-						<span class="position-absolute top-0 badge rounded-pill bg-primary">0</span>
+						<span class="position-absolute top-0 badge rounded-pill bg-secondary">0</span>
 					</a>
 				</li>
 
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
 					   aria-expanded="false">
-						<i class="bi bi-globe2"></i> <?= $this->config->item('languages')[$this->session->userdata('lang')] ?>
+						<img class="flag" src="<?=base_url('assets/img')?>/<?= $this->session->userdata('lang') ?>.png" alt="<?= $this->session->userdata('lang') ?>"> <?= $this->config->item('languages')[$this->session->userdata('lang')] ?>
 					</a>
 					<ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark">
 						<?php foreach ($this->config->item('languages') as $key => $value) : ?>
-							<li><a class="dropdown-item" href="<?= base_url('lang/' . $key) ?>"><i
-										class="bi bi-globe"></i> <?= $value ?></a></li>
+							<li><a class="dropdown-item" href="<?= base_url('lang/' . $key) ?>">
+									<img class="flag" src="<?=base_url('assets/img')?>/<?= $key ?>.png" alt="<?= $key ?>"> <?= $value ?></a></li>
 						<?php endforeach ?>
 					</ul>
 				</li>

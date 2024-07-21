@@ -144,6 +144,12 @@ class PageController extends MY_Controller
 
 	public function delete($id)
 	{
+		$page = $this->PageModel->show($id);
+		if ($page->type == 'default') {
+			$this->session->set_flashdata('error', $this->lang->line('page_can_not_be_deleted'));
+			redirect(base_url('admin/pages'));
+		}
+
 		$delete = $this->PageModel->delete($id);
 
 		if ($delete) {

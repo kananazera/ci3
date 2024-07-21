@@ -1,4 +1,4 @@
-<footer class="mt-5 bg-dark text-white py-3 px-5 text-end">
+<footer class="mt-5 py-3 px-5 text-end">
 	Ⓒ <?= $this->config->item('app_name') ?> <?= date('Y') ?>
 </footer>
 

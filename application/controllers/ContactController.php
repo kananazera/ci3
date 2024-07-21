@@ -15,7 +15,7 @@ class ContactController extends MY_Controller
 	public function index()
 	{
 		$header['title'] = $this->lang->line('contact');
-		$footer['pages'] = $this->PageModel->getPages($this->session->userdata('lang'));
+		$footer['footer_pages'] = $this->PageModel->getPages($this->session->userdata('lang'), 'footer');
 
 		$this->load->view('layouts/header', $header);
 		$this->load->view('pages/contact');

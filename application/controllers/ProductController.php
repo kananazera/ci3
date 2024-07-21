@@ -58,7 +58,7 @@ class ProductController extends MY_Controller
 		}
 
 		$header['title'] = $this->lang->line('products');
-		$footer['pages'] = $this->PageModel->getPages($this->session->userdata('lang'));
+		$footer['footer_pages'] = $this->PageModel->getPages($this->session->userdata('lang'), 'footer');
 
 		$this->load->view('layouts/header', $header);
 		$this->load->view('products/index', $data);
@@ -98,7 +98,7 @@ class ProductController extends MY_Controller
 		$this->pagination->initialize($config);
 
 		$header['title'] = $product->title;
-		$footer['pages'] = $this->PageModel->getPages($this->session->userdata('lang'));
+		$footer['footer_pages'] = $this->PageModel->getPages($this->session->userdata('lang'), 'footer');
 
 		$data['product'] = $product;
 		$data['properties'] = $this->PropertyValueModel->get($product->id);

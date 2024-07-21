@@ -50,7 +50,7 @@ class BlogController extends MY_Controller
 		}
 
 		$header['title'] = $this->lang->line('blog');
-		$footer['pages'] = $this->PageModel->getPages($this->session->userdata('lang'));
+		$footer['footer_pages'] = $this->PageModel->getPages($this->session->userdata('lang'), 'footer');
 
 		$this->load->view('layouts/header', $header);
 		$this->load->view('blog/index', $data);
@@ -61,7 +61,7 @@ class BlogController extends MY_Controller
 	{
 		$blog = $this->BlogModel->showBySlug($slug);
 		$header['title'] = $blog->title;
-		$footer['pages'] = $this->PageModel->getPages($this->session->userdata('lang'));
+		$footer['footer_pages'] = $this->PageModel->getPages($this->session->userdata('lang'), 'footer');
 
 		$update_data['views'] = $blog->views + 1;;
 		$this->BlogModel->update($blog->id, $update_data);

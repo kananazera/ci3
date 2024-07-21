@@ -8,8 +8,6 @@ $route['translate_uri_dashes'] = TRUE;
 //web
 $route['lang/(:any)'] = 'LanguageController/switchLang/$1';
 $route['403'] = 'PageController/error403';
-$route['pages'] = 'PageController/index';
-$route['about'] = 'PageController/page/about';
 $route['privacy-policy'] = 'PageController/page/privacy-policy';
 $route['terms-and-conditions'] = 'PageController/page/terms-and-conditions';
 $route['contact']['get'] = 'ContactController/index';
@@ -38,6 +36,7 @@ $route['product/comment/delete/(:num)/(:num)'] = 'ProductController/deleteCommen
 $route['blog'] = 'BlogController/index';
 $route['blog/(:num)'] = 'BlogController/index/$1';
 $route['blog/view/(:any)'] = 'BlogController/blog/$1';
+$route['(:any)'] = 'PageController/page/$1';
 
 //api
 $route['api/users'] = 'api/UserController/index';

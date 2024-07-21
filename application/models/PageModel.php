@@ -65,7 +65,7 @@ class PageModel extends CI_Model
 		return ($query->num_rows() == 1) ? $query->row() : false;
 	}
 
-	public function getPages($lang = null)
+	public function getPages($lang = null, $type = null)
 	{
 		$lang = ($lang == null) ? $this->config->item('language') : $lang;
 
@@ -73,6 +73,17 @@ class PageModel extends CI_Model
 		$this->db->from('pages');
 		$this->db->where('is_active', true);
 		$this->db->where('lang', $lang);
+		$this->db->where('type', $type);
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+	public function getNullParentPages()
+	{
+		$this->db->select('*');
+		$this->db->from('pages');
+		$this->db->where('parent_id', null);
+		$this->db->where('type !=', 'default');
 		$query = $this->db->get();
 		return $query->result();
 	}

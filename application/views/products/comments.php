@@ -21,7 +21,7 @@
 	<div class="mb-2">
 		<?= $this->lang->line('comment_info') ?>
 	</div>
-	<div>
+	<div class="mb-3">
 		<a class="link-dark" target="_blank"
 		   href="<?= base_url('login') ?>"><?= $this->lang->line('login') ?></a> <?= $this->lang->line('or') ?>
 		<a class="link-dark" target="_blank" href="<?= base_url('register') ?>"><?= $this->lang->line('register') ?></a>
@@ -37,7 +37,7 @@
 					<?= $this->UserModel->show($comment->user_id)->name ?>
 				</div>
 			</div>
-			<?php if ($comment->user_id == $this->session->userdata('auth_user')->id) : ?>
+			<?php if ($this->session->has_userdata('authenticated') && $comment->user_id == $this->session->userdata('auth_user')->id) : ?>
 				<div class="col-6 text-end">
 					<a class="link-dark"
 					   href="<?= base_url('product/comment/delete/' . $comment->id . '/' . $product->id) ?>">

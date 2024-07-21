@@ -18,7 +18,7 @@
 						<div class="mb-3 text-end">
 							<a href="<?= base_url('admin/pages') ?>"
 							   class="btn btn-dark"><i
-									class="bi bi-list"></i> <?= $this->lang->line('pages') ?></a>
+										class="bi bi-list"></i> <?= $this->lang->line('pages') ?></a>
 						</div>
 
 						<?php if ($this->session->flashdata('success')) : ?>
@@ -71,11 +71,12 @@
 									<div class="input-group">
 										<span class="input-group-text"><i class="bi bi-globe2"></i></span>
 										<select name="lang" id="lang"
-												class="<?php if (form_error('lang')) { ?> is-invalid <?php } ?> form-select" required>
+												class="<?php if (form_error('lang')) { ?> is-invalid <?php } ?> form-select"
+												required>
 											<option value=""><?= $this->lang->line('select') ?></option>
 											<?php foreach ($this->config->item('languages') as $key => $value) : ?>
 												<option
-													value="<?= $key ?>" <?= (set_value('lang') == $key) ? 'selected' : '' ?>><?= $value ?></option>
+														value="<?= $key ?>" <?= (set_value('lang') == $key) ? 'selected' : '' ?>><?= $value ?></option>
 											<?php endforeach ?>
 										</select>
 									</div>
@@ -85,10 +86,32 @@
 								</div>
 
 								<div class="mb-3">
+									<label for="type" class="mb-1"><?= $this->lang->line('page_type') ?></label>
+									<div class="input-group">
+										<span class="input-group-text"><i class="bi bi-hash"></i></span>
+										<select name="type" id="type"
+												class="<?php if (form_error('type')) { ?> is-invalid <?php } ?> form-select"
+												required>
+											<option value=""><?= $this->lang->line('select') ?></option>
+											<option value="navigation" <?= (set_value('type') == 'navigation') ? 'selected' : '' ?>>
+												Navigation
+											</option>
+											<option value="footer" <?= (set_value('type') == 'footer') ? 'selected' : '' ?>>
+												Footer
+											</option>
+										</select>
+									</div>
+									<?php if (form_error('type')) { ?>
+										<div class="badge text-danger"><?= form_error('type') ?></div>
+									<?php } ?>
+								</div>
+
+								<div class="mb-3">
 									<div class="input-group">
 										<input type="checkbox" id="is_active" name="is_active"
 											   class="form-check-input rounded" checked>
-										<label for="is_active" class="mx-2"><?= $this->lang->line('is_active') ?></label>
+										<label for="is_active"
+											   class="mx-2"><?= $this->lang->line('is_active') ?></label>
 									</div>
 								</div>
 							</div>

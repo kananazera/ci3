@@ -57,6 +57,7 @@
 									<th><?= $this->lang->line('slug') ?></th>
 									<th><?= $this->lang->line('title') ?></th>
 									<th><?= $this->lang->line('lang') ?></th>
+									<th><?= $this->lang->line('page_type') ?></th>
 									<th><?= $this->lang->line('is_active') ?></th>
 									<th><?= $this->lang->line('edit') ?></th>
 									<th><?= $this->lang->line('delete') ?></th>
@@ -68,6 +69,7 @@
 										<td><?= $row->slug ?></td>
 										<td><?= $row->title ?></td>
 										<td><?= $this->config->item('languages')[$row->lang] ?></td>
+										<td><?= ucfirst($row->type) ?></td>
 										<td><?= ($row->is_active == 1) ? '<div class="badge bg-success">' . $this->lang->line('yes') . '</div>' : '<div class="badge bg-danger text-white">' . $this->lang->line('no') . '</div>' ?></td>
 										<td><a class="btn btn-sm btn-dark" href="<?= base_url('admin/pages/edit/' . $row->id) ?>"><i
 													class="bi bi-pencil"></i></a></td>

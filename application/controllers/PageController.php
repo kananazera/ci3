@@ -3,17 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class PageController extends MY_Controller
 {
-	public function index()
-	{
-		$header['title'] = $this->lang->line('pages');
-
-		$data['pages'] = $this->PageModel->getPages($this->session->userdata('lang'));
-
-		$this->load->view('layouts/header', $header);
-		$this->load->view('pages/index', $data);
-		$this->load->view('layouts/footer', $data);
-	}
-
 	public function page($slug)
 	{
 		$data['page'] = $this->PageModel->page($slug, $this->session->userdata('lang'));
@@ -21,7 +10,7 @@ class PageController extends MY_Controller
 			$data['page'] = $this->PageModel->page($slug, $this->config->item('language'));
 		}
 		$header['title'] = $data['page']->title;
-		$footer['pages'] = $this->PageModel->getPages($this->session->userdata('lang'));
+		$footer['footer_pages'] = $this->PageModel->getPages($this->session->userdata('lang'), 'footer');
 
 		$this->load->view('layouts/header', $header);
 		$this->load->view('pages/page', $data);
@@ -31,7 +20,7 @@ class PageController extends MY_Controller
 	public function error404()
 	{
 		$header['title'] = $this->lang->line('error_404_title');
-		$footer['pages'] = $this->PageModel->getPages($this->session->userdata('lang'));
+		$footer['footer_pages'] = $this->PageModel->getPages($this->session->userdata('lang'), 'footer');
 
 		$this->load->view('layouts/header', $header);
 		$this->load->view('pages/error404');
@@ -41,7 +30,7 @@ class PageController extends MY_Controller
 	public function error403()
 	{
 		$header['title'] = $this->lang->line('error_403_title');
-		$footer['pages'] = $this->PageModel->getPages($this->session->userdata('lang'));
+		$footer['footer_pages'] = $this->PageModel->getPages($this->session->userdata('lang'), 'footer');
 
 		$this->load->view('layouts/header', $header);
 		$this->load->view('pages/error403');
