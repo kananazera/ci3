@@ -146,4 +146,23 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="accordion-item">
+		<h2 class="accordion-header">
+			<button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+					data-bs-target="#flush-slide" aria-expanded="false" aria-controls="flush-slide">
+				<i class="bi bi-sliders mx-1"></i> <?= $this->lang->line('slides') ?>
+			</button>
+		</h2>
+		<div id="flush-slide" class="accordion-collapse collapse" data-bs-parent="#accordion">
+			<div class="accordion-body">
+				<ul>
+					<li class="mb-1"><a class="link-dark" href="<?= base_url('admin/slides') ?>"><i
+									class="bi bi-arrow-right-short"></i> <?= $this->lang->line('slides') ?></a></li>
+					<li class="mb-1"><a class="link-dark" href="<?= base_url('admin/slides/create') ?>"><i
+									class="bi bi-arrow-right-short"></i> <?= $this->lang->line('create_slide') ?></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
 </div>

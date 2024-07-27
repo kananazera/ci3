@@ -25,7 +25,7 @@ class ContactMessageController extends MY_Controller
 
 		$config['base_url'] = base_url('admin/contact/messages');
 		$config['total_rows'] = $this->ContactMessageModel->count();
-		$config['per_page'] = 10;
+		$config['per_page'] = 25;
 		$config['uri_segment'] = 4;
 
 		$config['full_tag_open'] = '<div class="pagging text-center"><nav><ul class="pagination">';

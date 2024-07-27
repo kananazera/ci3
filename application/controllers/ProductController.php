@@ -58,11 +58,10 @@ class ProductController extends MY_Controller
 		}
 
 		$header['title'] = $this->lang->line('products');
-		$footer['footer_pages'] = $this->PageModel->getPages($this->session->userdata('lang'), 'footer');
 
 		$this->load->view('layouts/header', $header);
 		$this->load->view('products/index', $data);
-		$this->load->view('layouts/footer', $footer);
+		$this->load->view('layouts/footer');
 	}
 
 	public function product($slug, $offset = 0)
@@ -98,7 +97,6 @@ class ProductController extends MY_Controller
 		$this->pagination->initialize($config);
 
 		$header['title'] = $product->title;
-		$footer['footer_pages'] = $this->PageModel->getPages($this->session->userdata('lang'), 'footer');
 
 		$data['product'] = $product;
 		$data['properties'] = $this->PropertyValueModel->get($product->id);
@@ -107,7 +105,7 @@ class ProductController extends MY_Controller
 
 		$this->load->view('layouts/header', $header);
 		$this->load->view('products/view', $data);
-		$this->load->view('layouts/footer', $footer);
+		$this->load->view('layouts/footer');
 	}
 
 	public function writeComment($product_id)

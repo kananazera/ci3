@@ -35,35 +35,16 @@
 
 						<?= form_open('admin/pages/edit/' . $page->id) ?>
 
-						<div class="badge text-danger mb-3">
-							<?= $this->lang->line('slug_info') ?>
-						</div>
-
 						<div class="row">
 							<div class="col-12 col-md-5 mb-3 mb-md-0">
-								<div class="mb-3">
-									<label for="slug" class="mb-1"><?= $this->lang->line('slug') ?></label>
-									<div class="input-group">
-										<span class="input-group-text"><i class="bi bi-link"></i></span>
-										<input <?= $page->type == 'default' ? 'disabled' : '' ?> type="text"
-																								 id="slug" name="slug"
-																								 value="<?= set_value('slug', $page->slug) ?>"
-																								 class="<?php if (form_error('slug')) { ?> is-invalid <?php } ?> form-control">
-									</div>
-									<?php if (form_error('slug')) { ?>
-										<div class="badge text-danger"><?= form_error('slug') ?></div>
-									<?php } ?>
-								</div>
-
 								<div class="mb-3">
 									<label for="title" class="mb-1"><?= $this->lang->line('title') ?></label>
 									<div class="input-group">
 										<span class="input-group-text"><i class="bi bi-chat-square-text"></i></span>
-										<input <?= $page->type == 'default' ? 'disabled' : '' ?> type="text" id="title"
-																								 name="title"
-																								 value="<?= set_value('title', $page->title) ?>"
-																								 class="<?php if (form_error('title')) { ?> is-invalid <?php } ?> form-control"
-																								 required>
+										<input type="text" id="title" name="title"
+											   value="<?= set_value('title', $page->title) ?>"
+											   class="<?php if (form_error('title')) { ?> is-invalid <?php } ?> form-control"
+											   required>
 									</div>
 									<?php if (form_error('title')) { ?>
 										<div class="badge text-danger"><?= form_error('title') ?></div>
@@ -88,18 +69,24 @@
 										<div class="badge text-danger"><?= form_error('lang') ?></div>
 									<?php } ?>
 								</div>
+							</div>
 
+							<div class="col-12 col-md-7 mb-3 mb-md-0">
 								<div class="mb-3">
-									<label for="type" class="mb-1"><?= $this->lang->line('page_type') ?></label>
+									<label for="page_id" class="mb-1"><?= $this->lang->line('main_page') ?></label>
 									<div class="input-group">
-										<span class="input-group-text"><i class="bi bi-hash"></i></span>
-										<select <?= $page->type == 'default' ? 'disabled' : '' ?> name="type" id="type"
-																								  class="<?php if (form_error('type')) { ?> is-invalid <?php } ?> form-select"
-																								  required>
+										<span class="input-group-text"><i class="bi bi-bookmark"></i></span>
+										<select <?= $page->type == 'default' ? 'disabled' : '' ?> name="page_id"
+																								  id="page_id"
+																								  class="<?php if (form_error('page_id')) { ?> is-invalid <?php } ?> form-select">
 											<option value=""><?= $this->lang->line('select') ?></option>
-											<option disabled value="default" <?= ($page->type == 'default') ? 'selected' : '' ?>>Default</option>
-											<option value="navigation" <?= ($page->type == 'navigation') ? 'selected' : '' ?>>Navigation</option>
-											<option value="footer" <?= ($page->type == 'footer') ? 'selected' : '' ?>>Footer</option>
+
+											<?php foreach ($main_pages as $row) { ?>
+												<option value="<?= $row->id ?>" <?= ($page->page_id == $row->id) ? 'selected' : '' ?>>
+													<?= $row->title ?> - (<?= $row->lang ?>)
+												</option>
+											<?php } ?>
+
 										</select>
 									</div>
 									<?php if (form_error('type')) { ?>
@@ -107,26 +94,58 @@
 									<?php } ?>
 								</div>
 
+								<div class="mb-3" id="type-area">
+									<label for="type" class="mb-1"><?= $this->lang->line('page_type') ?></label>
+									<div class="input-group">
+										<span class="input-group-text"><i class="bi bi-hash"></i></span>
+										<select name="type" id="type"
+												class="<?php if (form_error('type')) { ?> is-invalid <?php } ?> form-select">
+											<option value=""><?= $this->lang->line('select') ?></option>
+											<option value="navigation" <?= ($page->type == 'navigation') ? 'selected' : '' ?>>
+												Navigation
+											</option>
+											<option value="footer" <?= ($page->type == 'footer') ? 'selected' : '' ?>>
+												Footer
+											</option>
+										</select>
+									</div>
+									<?php if (form_error('type')) { ?>
+										<div class="badge text-danger"><?= form_error('type') ?></div>
+									<?php } ?>
+								</div>
+
+								<div class="mb-3" id="slug-area">
+									<label for="slug" class="mb-1"><?= $this->lang->line('slug') ?></label>
+									<div class="input-group">
+										<span class="input-group-text"><i class="bi bi-link"></i></span>
+										<input type="text" id="slug" name="slug" value="<?= $page->slug ?>"
+											   class="<?php if (form_error('slug')) { ?> is-invalid <?php } ?> form-control">
+									</div>
+									<?php if (form_error('slug')) { ?>
+										<div class="badge text-danger"><?= form_error('slug') ?></div>
+									<?php } ?>
+									<div class="badge text-danger mb-3">
+										<?= $this->lang->line('slug_info') ?>
+									</div>
+								</div>
+
 								<div class="mb-3">
 									<div class="input-group">
-										<input <?= $page->type == 'default' ? 'disabled' : '' ?> type="checkbox"
-																								 id="is_active"
-																								 name="is_active"
-																								 class="form-check-input rounded" <?= ($page->is_active == 1) ? 'checked' : '' ?>>
+										<input type="checkbox" id="is_active" name="is_active"
+											   class="form-check-input rounded" <?= ($page->is_active == 1) ? 'checked' : '' ?>>
 										<label for="is_active"
 											   class="mx-2"><?= $this->lang->line('is_active') ?></label>
 									</div>
 								</div>
 							</div>
 
-							<div class="col-12 col-md-7 mb-3 mb-md-0">
+							<div class="col-12 mb-3 mb-md-0" id="content-area">
 								<div class="mb-3">
-									<label for="content"
-										   class="mb-1"><?= $this->lang->line('content') ?></label>
+									<label for="content" class="mb-1"><?= $this->lang->line('content') ?></label>
 									<div class="input-group">
 										<span class="input-group-text"><i class="bi bi-body-text"></i></span>
-										<textarea rows="10" id="content" name="content"
-												  class="<?php if (form_error('content')) { ?> is-invalid <?php } ?> form-control"><?= set_value('content', $page->content) ?></textarea>
+										<textarea rows="15" id="content" name="content"
+												  class="<?php if (form_error('content')) { ?> is-invalid <?php } ?> form-control"><?= set_value('content') ?></textarea>
 									</div>
 									<?php if (form_error('content')) { ?>
 										<div class="badge text-danger"><?= form_error('content') ?></div>
@@ -150,3 +169,34 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		var selectElement = document.getElementById("page_id");
+		var content = document.getElementById("content-area");
+		var slug = document.getElementById("slug-area");
+		var type = document.getElementById("type-area");
+
+		<?php if($page->page_id == null) { ?>
+			slug.style.display = "none";
+			content.style.display = "none";
+			type.style.display = "block";
+		<?php } else { ?>
+			slug.style.display = "block";
+			content.style.display = "block";
+			type.style.display = "none";
+		<?php } ?>
+
+		selectElement.addEventListener("change", function () {
+			if (selectElement.value != "") {
+				slug.style.display = "block";
+				content.style.display = "block";
+				type.style.display = "none";
+			} else {
+				slug.style.display = "none";
+				content.style.display = "none";
+				type.style.display = "block";
+			}
+		});
+	});
+</script>

@@ -18,11 +18,10 @@ class PasswordController extends MY_Controller
 	public function index()
 	{
 		$header['title'] = $this->lang->line('forgot_password');
-		$footer['pages'] = $this->PageModel->getPages($this->session->userdata('lang'));
 
 		$this->load->view('layouts/header', $header);
 		$this->load->view('auth/password/send');
-		$this->load->view('layouts/footer', $footer);
+		$this->load->view('layouts/footer');
 	}
 
 	public function reset($token)
@@ -30,11 +29,10 @@ class PasswordController extends MY_Controller
 		$data['token'] = $this->PasswordResetTokenModel->get($token);
 
 		$header['title'] = $this->lang->line('reset_password');
-		$footer['pages'] = $this->PageModel->getPages($this->session->userdata('lang'));
 
 		$this->load->view('layouts/header', $header);
 		$this->load->view('auth/password/reset', $data);
-		$this->load->view('layouts/footer', $footer);
+		$this->load->view('layouts/footer');
 	}
 
 	public function change()

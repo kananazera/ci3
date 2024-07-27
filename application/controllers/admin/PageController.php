@@ -30,7 +30,7 @@ class PageController extends MY_Controller
 		} else {
 			$config['total_rows'] = $this->PageModel->count();
 		}
-		$config['per_page'] = 10;
+		$config['per_page'] = 25;
 		$config['uri_segment'] = 3;
 
 		$config['full_tag_open'] = '<div class="pagging text-center"><nav><ul class="pagination">';
@@ -63,14 +63,17 @@ class PageController extends MY_Controller
 
 	public function create()
 	{
+		$data['main_pages'] = $this->PageModel->getMainPages();
+
 		$this->load->view('admin/layouts/header');
-		$this->load->view('admin/pages/create');
+		$this->load->view('admin/pages/create', $data);
 		$this->load->view('admin/layouts/footer');
 	}
 
 	public function edit($id)
 	{
 		$data['page'] = $this->PageModel->show($id);
+		$data['main_pages'] = $this->PageModel->getMainPages();
 
 		$this->load->view('admin/layouts/header');
 		$this->load->view('admin/pages/edit', $data);
@@ -80,7 +83,6 @@ class PageController extends MY_Controller
 	public function store()
 	{
 		$this->form_validation->set_rules('title', $this->lang->line('title'), 'required');
-		$this->form_validation->set_rules('content', $this->lang->line('content'), 'required');
 		$this->form_validation->set_rules('lang', $this->lang->line('lang'), 'required');
 
 		if ($this->form_validation->run() == false) {
@@ -89,6 +91,8 @@ class PageController extends MY_Controller
 			$data['title'] = $this->input->post('title');
 			$data['content'] = $this->input->post('content');
 			$data['lang'] = $this->input->post('lang');
+			$data['type'] = $this->input->post('type');
+			$data['page_id'] = (empty($this->input->post('page_id'))) ? null : $this->input->post('page_id');
 			$data['is_active'] = ($this->input->post('is_active') == 'on') ? 1 : 0;
 			$data['slug'] = ($this->input->post('slug')) ? $data['slug'] = $this->input->post('slug') : generateSlug($this->input->post('title'));
 
@@ -109,7 +113,6 @@ class PageController extends MY_Controller
 		$page = $this->PageModel->show($id);
 
 		$this->form_validation->set_rules('title', $this->lang->line('title'), 'required');
-		$this->form_validation->set_rules('content', $this->lang->line('content'), 'required');
 		$this->form_validation->set_rules('lang', $this->lang->line('lang'), 'required');
 
 		if ($this->form_validation->run() == false) {
@@ -118,9 +121,11 @@ class PageController extends MY_Controller
 			$data['title'] = $this->input->post('title');
 			$data['content'] = $this->input->post('content');
 			$data['lang'] = $this->input->post('lang');
+			$data['type'] = $this->input->post('type');
+			$data['page_id'] = (empty($this->input->post('page_id'))) ? null : $this->input->post('page_id');
 			$data['is_active'] = ($this->input->post('is_active') == 'on') ? 1 : 0;
 
-			if(!$this->input->post('slug')) {
+			if (!$this->input->post('slug')) {
 				$data['slug'] = generateSlug($this->input->post('title'));
 			} else if ($page->slug != $this->input->post('slug')) {
 				$data['slug'] = $this->input->post('slug');

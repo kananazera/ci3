@@ -32,7 +32,7 @@ class CategoryController extends MY_Controller
 		} else {
 			$config['total_rows'] = $this->CategoryModel->count();
 		}
-		$config['per_page'] = 10;
+		$config['per_page'] = 25;
 		$config['uri_segment'] = 3;
 
 		$config['full_tag_open'] = '<div class="pagging text-center"><nav><ul class="pagination">';

@@ -10,30 +10,27 @@ class PageController extends MY_Controller
 			$data['page'] = $this->PageModel->page($slug, $this->config->item('language'));
 		}
 		$header['title'] = $data['page']->title;
-		$footer['footer_pages'] = $this->PageModel->getPages($this->session->userdata('lang'), 'footer');
 
 		$this->load->view('layouts/header', $header);
 		$this->load->view('pages/page', $data);
-		$this->load->view('layouts/footer', $footer);
+		$this->load->view('layouts/footer');
 	}
 
 	public function error404()
 	{
 		$header['title'] = $this->lang->line('error_404_title');
-		$footer['footer_pages'] = $this->PageModel->getPages($this->session->userdata('lang'), 'footer');
 
 		$this->load->view('layouts/header', $header);
 		$this->load->view('pages/error404');
-		$this->load->view('layouts/footer', $footer);
+		$this->load->view('layouts/footer');
 	}
 
 	public function error403()
 	{
 		$header['title'] = $this->lang->line('error_403_title');
-		$footer['footer_pages'] = $this->PageModel->getPages($this->session->userdata('lang'), 'footer');
 
 		$this->load->view('layouts/header', $header);
 		$this->load->view('pages/error403');
-		$this->load->view('layouts/footer', $footer);
+		$this->load->view('layouts/footer');
 	}
 }

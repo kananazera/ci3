@@ -24,11 +24,10 @@ class ProfileController extends MY_Controller
 	public function index()
 	{
 		$header['title'] = $this->lang->line('profile');
-		$footer['footer_pages'] = $this->PageModel->getPages($this->session->userdata('lang'), 'footer');
 
 		$this->load->view('layouts/header', $header);
 		$this->load->view('user/profile');
-		$this->load->view('layouts/footer', $footer);
+		$this->load->view('layouts/footer');
 	}
 
 	public function updateInformation()

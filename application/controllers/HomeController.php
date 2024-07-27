@@ -17,7 +17,6 @@ class HomeController extends MY_Controller
 	public function index()
 	{
 		$header['title'] = $this->lang->line('home');
-		$footer['footer_pages'] = $this->PageModel->getPages($this->session->userdata('lang'), 'footer');
 
 		$data['last_products'] = $this->ProductModel->getLastProducts();
 		$data['discount_products'] = $this->ProductModel->getDiscountProducts();
@@ -26,6 +25,6 @@ class HomeController extends MY_Controller
 
 		$this->load->view('layouts/header', $header);
 		$this->load->view('home/index', $data);
-		$this->load->view('layouts/footer', $footer);
+		$this->load->view('layouts/footer');
 	}
 }

@@ -36,7 +36,7 @@ $route['product/comment/delete/(:num)/(:num)'] = 'ProductController/deleteCommen
 $route['blog'] = 'BlogController/index';
 $route['blog/(:num)'] = 'BlogController/index/$1';
 $route['blog/view/(:any)'] = 'BlogController/blog/$1';
-$route['(:any)'] = 'PageController/page/$1';
+$route['page/(:any)'] = 'PageController/page/$1';
 
 //api
 $route['api/users'] = 'api/UserController/index';

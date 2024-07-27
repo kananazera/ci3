@@ -16,11 +16,10 @@ class LoginController extends MY_Controller
 	public function index()
 	{
 		$header['title'] = $this->lang->line('login');
-		$footer['pages'] = $this->PageModel->getPages($this->session->userdata('lang'));
 
 		$this->load->view('layouts/header', $header);
 		$this->load->view('auth/login');
-		$this->load->view('layouts/footer', $footer);
+		$this->load->view('layouts/footer');
 	}
 
 	public function login()

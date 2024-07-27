@@ -34,5 +34,11 @@
 <script>
 	AOS.init();
 </script>
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+<script>
+	const quill = new Quill('#content', {
+		theme: 'snow'
+	});
+</script>
 </body>
 </html>

@@ -15,11 +15,10 @@ class ContactController extends MY_Controller
 	public function index()
 	{
 		$header['title'] = $this->lang->line('contact');
-		$footer['footer_pages'] = $this->PageModel->getPages($this->session->userdata('lang'), 'footer');
 
 		$this->load->view('layouts/header', $header);
 		$this->load->view('pages/contact');
-		$this->load->view('layouts/footer', $footer);
+		$this->load->view('layouts/footer');
 	}
 
 	public function send()
